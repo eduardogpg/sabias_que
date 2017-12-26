@@ -1,0 +1,54 @@
+<div class="container">
+
+  <div class="row">
+    <h2>Listado de curiosidades</h2>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <div class="col-md-4">
+        <!-- Texto a la izquierda-->
+      </div>
+
+      <div class="col-md-4 col-md-offset-4">
+        <div class="pull-right">
+
+          <%= link_to "Nuevo", new_fact_path ,class:"btn btn-success", style:"color:white"%>
+          <%= link_to "Buscar", "/" ,class:"btn btn-info", style:"color:white"%>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Color</th>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Verdadero</th>
+          <th>Comprobable</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @facts.each do |fact| %>
+          <tr>
+            <td><%= fact.id %></td>
+            <td><%= fact.color %></td>
+            <td><%= fact.title %></td>
+            <td><%= fact.description %></td>
+            <td><%= fact.real %></td>
+            <td><%= fact.provable %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= will_paginate @facts, :page_links => false, page_links: false, previous_label: "Anterior", next_label: "Siguiente" %>
+  </div>
+</div>
+

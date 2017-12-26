@@ -1,0 +1,7 @@
+$('#new_fact_form').trigger("reset");
+<% if @fact.persisted? %>
+  toastr.success('Dato creado exitosamente!', {timeOut: 5000})
+<% else %>
+  toastr.error('No fue posible crear el dato de forma correcta', {timeOut: 5000})
+<% end %>
+

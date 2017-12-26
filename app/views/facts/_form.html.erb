@@ -1,0 +1,38 @@
+<%= form_with(model: fact, remote: true, id:"new_fact_form") do |form| %>
+  
+  <% if fact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fact.errors.count, "error") %> prohibited this fact from being saved:</h2>
+      <ul>
+      <% fact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :fact_title, placeholder:"title", class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :fact_description, placeholder:"description", class:"form-control" %>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <%= form.check_box :real, id: :fact_real %> Real
+    </label>
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <%= form.check_box :provable, id: :fact_provable %> Provable
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Crear nuevo dato</button>
+
+<% end %>
