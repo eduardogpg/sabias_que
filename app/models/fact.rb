@@ -6,6 +6,14 @@ class Fact < ApplicationRecord
   before_create :set_color
   before_create :set_code
     
+  def is_real?
+    !real.nil? && real
+  end
+
+  def real_format
+    if self.is_real? then 'Verdadero' else 'Falso' end
+  end
+
   private
     def generate_code
       SecureRandom.uuid

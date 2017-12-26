@@ -36,19 +36,23 @@
       
       <tbody>
         <% @facts.each do |fact| %>
+          
           <tr>
             <td><%= fact.id %></td>
             <td><%= fact.color %></td>
-            <td><%= fact.title %></td>
-            <td><%= fact.description %></td>
+            <td>
+              <%= link_to fact.title, fact, class:"btn btn-link"%>
+            </td>
+            <td><%= fact.description.truncate 20, omission:"..." %></td>
             <td><%= fact.real %></td>
             <td><%= fact.provable %></td>
           </tr>
+
         <% end %>
       </tbody>
     </table>
     
-    <%= will_paginate @facts, :page_links => false, page_links: false, previous_label: "Anterior", next_label: "Siguiente" %>
+    <%= will_paginate @facts, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
 

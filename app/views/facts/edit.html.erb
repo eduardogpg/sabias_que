@@ -1,6 +1,10 @@
-<h1>Editing Fact</h1>
+<div class="container">
+  <div class="row">
+    <h1>Editar dato</h1>  
+  </div>
 
-<%= render 'form', fact: @fact %>
-
-<%= link_to 'Show', @fact %> |
-<%= link_to 'Back', facts_path %>
+  <div class="row">
+    <%= render 'form', fact: @fact, action:'Editar' %>
+  </div>
+  
+</div>

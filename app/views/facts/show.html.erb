@@ -1,29 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  
+  <div class="card text-center">
+    <div class="card-header">
+      <%= @fact.code %>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"> <%= @fact.title %> </h2>
+      <p class="card-text"> <%= @fact.description%> </p>
+      
+      <%= link_to "Editar", edit_fact_path(@fact), class:"btn btn-primary", style:"color:white" %>
+      <%= link_to "Eliminar", edit_fact_path(@fact), class:"btn btn-danger", style:"color:white" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @fact.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @fact.description %>
-</p>
-
-<p>
-  <strong>Real:</strong>
-  <%= @fact.real %>
-</p>
-
-<p>
-  <strong>Provable:</strong>
-  <%= @fact.provable %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @fact.color %>
-</p>
-
-<%= link_to 'Edit', edit_fact_path(@fact) %> |
-<%= link_to 'Back', facts_path %>
+    </div>
+    <div class="card-footer text-muted">
+      <%= @fact.real_format %>
+    </div>
+  </div>
+</div>

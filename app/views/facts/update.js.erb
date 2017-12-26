@@ -1,0 +1,6 @@
+<% if @fact.persisted? %>
+  toastr.success('Dato editado exitosamente!', {timeOut: 5000})
+<% else %>
+  toastr.error('No fue posible editar el dato de forma correcta', {timeOut: 5000})
+<% end %>
+

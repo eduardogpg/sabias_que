@@ -57,4 +57,5 @@ gem 'annotate'
 gem 'bootstrap3-rails'
 gem "will_paginate"
 gem 'jquery-rails'
+gem 'will_paginate-bootstrap'
 
