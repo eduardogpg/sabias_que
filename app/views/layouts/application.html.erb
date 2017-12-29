@@ -12,7 +12,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -24,12 +23,33 @@
           <li><a href="#">Page 2</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <% if user_signed_in?%>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="glyphicon glyphicon-log-out"></span> Logout
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_registration_path do %>
+                <span class="glyphicon glyphicon-user"></span> Sign up
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to new_user_session_path do  %>
+                <span class="glyphicon glyphicon-log-in"></span> Login
+              <% end %>
+            </li>
+          <% end %>
+          
         </ul>
       </div>
     </nav>
 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
     <%= yield %>
   </body>
 </html>
