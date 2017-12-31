@@ -1,5 +1,7 @@
 class FactsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_fact, only: [:show, :edit, :update, :destroy]
+  before_action :max_editor!
 
   def index
     @facts = Fact.paginate(page: params[:page], per_page:50)
