@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171231204515) do
+ActiveRecord::Schema.define(version: 20171231205638) do
+
+  create_table "fact_tags", force: :cascade do |t|
+    t.integer "fact_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fact_id"], name: "index_fact_tags_on_fact_id"
+    t.index ["tag_id"], name: "index_fact_tags_on_tag_id"
+  end
 
   create_table "facts", force: :cascade do |t|
     t.string "title"
@@ -23,6 +32,12 @@ ActiveRecord::Schema.define(version: 20171231204515) do
     t.string "code"
     t.integer "user_id"
     t.index ["user_id"], name: "index_facts_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

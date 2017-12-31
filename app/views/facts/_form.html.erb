@@ -21,6 +21,11 @@
     <%= form.text_field :description, id: :fact_description, placeholder:"description", class:"form-control" %>
   </div>
 
+  <div class="field">
+    <%= form.label :application_tags %>
+    <%= form.text_field :application_tags, id: :fact_tags, placeholder:"tags", class:"form-control" %>
+  </div>
+
   <div class="checkbox">
     <label>
       <%= form.check_box :real, id: :fact_real %> Real

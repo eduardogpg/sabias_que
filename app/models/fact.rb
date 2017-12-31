@@ -25,6 +25,15 @@ class Fact < ApplicationRecord
   
   belongs_to :user
 
+  has_many :fact_tags
+  has_many :tags, through: :fact_tags
+
+  def self.create_fact_with_params(user, params, tags)
+    fact = Fact.new(user:user, title:params[:title], description:params[:description])
+    FactTag.generate_new_tags_by_fact(fact, tags) if fact.save
+    fact
+  end
+
   def is_real?
     !real.nil? && real
   end

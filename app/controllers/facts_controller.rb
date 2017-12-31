@@ -18,11 +18,8 @@ class FactsController < ApplicationController
   end
 
   def create
-    @fact = Fact.new(fact_params)
-    @fact.user = current_user
-
+    @fact = Fact.create_fact_with_params(current_user, fact_params, fact_params[:application_tags])
     respond_to do |format|
-      @fact.save
       format.js
     end
   end
@@ -48,6 +45,7 @@ class FactsController < ApplicationController
     end
 
     def fact_params
-      params.require(:fact).permit(:title, :description, :real, :provable, :color)
+      params.require(:fact).permit(:title, :description, :real, :provable, :color, :tags,
+                                    :application_tags )
     end
 end
