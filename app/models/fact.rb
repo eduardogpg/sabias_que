@@ -11,16 +11,20 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  code        :string
+#  user_id     :integer
 #
 
 class Fact < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+  validates :user_id, presence: true
 
   before_create :set_color
   before_create :set_code
-    
+  
+  belongs_to :user
+
   def is_real?
     !real.nil? && real
   end
