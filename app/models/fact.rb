@@ -26,7 +26,7 @@ class Fact < ApplicationRecord
   belongs_to :user
 
   has_many :fact_tags
-  has_many :tags, through: :fact_tags
+  #has_many :tags, through: :fact_tags
 
   def self.create_fact_with_params(user, params, tags)
     fact = Fact.new(user:user, title:params[:title], description:params[:description])
@@ -40,6 +40,10 @@ class Fact < ApplicationRecord
 
   def real_format
     if self.is_real? then 'Verdadero' else 'Falso' end
+  end
+
+  def tags
+    Tag.tags_by_fact(self)
   end
 
   private

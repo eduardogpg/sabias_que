@@ -22,5 +22,11 @@ class Tag < ApplicationRecord
     title.strip.downcase
   end
 
+  def self.tags_by_fact(fact)
+    self.joins(:fact_tags)
+    .where('fact_tags.fact_id = ?', fact.id)
+    .select('tags.id, tags.title')
+  end
+
 end
 
