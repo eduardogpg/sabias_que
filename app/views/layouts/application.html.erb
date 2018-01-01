@@ -8,51 +8,55 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+     <nav class="navbar navbar-inverse">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <%= link_to 'Sabias que', root_path, class:"navbar-brand" %>
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to 'Sabias que', root_path, class:"navbar-brand" %>
         </div>
-        
-        <ul class="nav navbar-nav">
-          <% if user_signed_in?%>
-            <li><%= link_to 'Listado de datos', facts_path %></li>
-            <li><%= link_to 'Nuevo dato', new_fact_path %></li>
-          <% end %>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in?%>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <span class="glyphicon glyphicon-log-out"></span> Logout
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <% if user_signed_in?%>
+                <li><%= link_to 'Listado de datos', facts_path %></li>
+                <li><%= link_to 'Nuevo dato', new_fact_path %></li>
               <% end %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to new_user_registration_path do %>
-                <span class="glyphicon glyphicon-user"></span> Sign up
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in?%>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                    <span class="glyphicon glyphicon-user"></span> Sign up
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do  %>
+                    <span class="glyphicon glyphicon-log-in"></span> Login
+                  <% end %>
+                </li>
               <% end %>
-            </li>
+            </ul>
+        </div>
+    </nav> 
 
-            <li>
-              <%= link_to new_user_session_path do  %>
-                <span class="glyphicon glyphicon-log-in"></span> Login
-              <% end %>
-            </li>
-          <% end %>
-          
-        </ul>
-      </div>
-    </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
     <%= yield %>
   </body>
 </html>

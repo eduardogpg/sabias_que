@@ -30,7 +30,6 @@
           <th>Titulo</th>
           <th>Descripción</th>
           <th>Verdadero</th>
-          <th>Comprobable</th>
         </tr>
       </thead>
       
@@ -45,7 +44,6 @@
             </td>
             <td><%= fact.description.truncate 20, omission:"..." %></td>
             <td><%= fact.real %></td>
-            <td><%= fact.provable %></td>
           </tr>
 
         <% end %>
