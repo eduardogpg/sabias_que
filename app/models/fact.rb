@@ -25,7 +25,7 @@ class Fact < ApplicationRecord
   
   belongs_to :user
 
-  has_many :fact_tags
+  has_many :fact_tags, dependent: :destroy
   
   def self.create_fact_with_params(user, params, tags)
     fact = Fact.new(user:user, title:params[:title], description:params[:description], resource:params[:resource])
