@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171231205638) do
+ActiveRecord::Schema.define(version: 20171231235519) do
 
   create_table "fact_tags", force: :cascade do |t|
     t.integer "fact_id"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20171231205638) do
     t.string "title"
     t.string "description"
     t.boolean "real", default: true
-    t.boolean "provable", default: false
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
     t.integer "user_id"
+    t.string "resource"
     t.index ["user_id"], name: "index_facts_on_user_id"
   end
 

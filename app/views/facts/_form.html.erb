@@ -31,11 +31,19 @@
       <%= form.check_box :real, id: :fact_real %> Real
     </label>
   </div>
+  
+  <!-- 
+    <div class="checkbox" id="provable">
+      <label>
+        <%= form.check_box :provable, id: :fact_provable %> Provable
+      </label>
+    </div>
+  -->
 
-  <div class="checkbox">
-    <label>
-      <%= form.check_box :provable, id: :fact_provable %> Provable
-    </label>
+  <div class="field" id="resource">
+    <%= form.label :resource %>
+    <%= form.text_field :resource, id: :resource_fact, placeholder:"resource", class:"form-control" %>
+    <small class="form-text text-muted"> URL de donde se obtuvo la información (opcional) </small>
   </div>
 
   <button type="submit" class="btn btn-primary"> <%= action %> </button>

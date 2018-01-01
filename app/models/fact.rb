@@ -6,12 +6,12 @@
 #  title       :string
 #  description :string
 #  real        :boolean          default(TRUE)
-#  provable    :boolean          default(FALSE)
 #  color       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  code        :string
 #  user_id     :integer
+#  resource    :string
 #
 
 class Fact < ApplicationRecord
@@ -26,10 +26,9 @@ class Fact < ApplicationRecord
   belongs_to :user
 
   has_many :fact_tags
-  #has_many :tags, through: :fact_tags
-
+  
   def self.create_fact_with_params(user, params, tags)
-    fact = Fact.new(user:user, title:params[:title], description:params[:description])
+    fact = Fact.new(user:user, title:params[:title], description:params[:description], resource:params[:resource])
     FactTag.generate_new_tags_by_fact(fact, tags) if fact.save
     fact
   end
@@ -56,7 +55,7 @@ class Fact < ApplicationRecord
     end
 
     def set_color
-      self.color ||= '#7B62CB'
+      self.color ||= '#' + SecureRandom.hex(3)
     end
 
 end

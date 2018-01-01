@@ -8,3 +8,22 @@
   </div>
   
 </div>
+
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+    
+
+    $('#fact_real').change(function(){
+      
+      $("#resource_fact").val(''); //clear input
+
+      if($('#fact_real').is(':checked'))
+        $('#resource').show(); 
+      else
+        $('#resource').hide(); 
+    });
+
+  });
+
+</script>
