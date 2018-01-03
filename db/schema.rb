@@ -12,16 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20171231235519) do
 
-  create_table "fact_tags", force: :cascade do |t|
-    t.integer "fact_id"
-    t.integer "tag_id"
+  create_table "fact_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "fact_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fact_id"], name: "index_fact_tags_on_fact_id"
     t.index ["tag_id"], name: "index_fact_tags_on_tag_id"
   end
 
-  create_table "facts", force: :cascade do |t|
+  create_table "facts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.string "description"
     t.boolean "real", default: true
@@ -29,18 +29,18 @@ ActiveRecord::Schema.define(version: 20171231235519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "resource"
     t.index ["user_id"], name: "index_facts_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -58,4 +58,7 @@ ActiveRecord::Schema.define(version: 20171231235519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fact_tags", "facts"
+  add_foreign_key "fact_tags", "tags"
+  add_foreign_key "facts", "users"
 end

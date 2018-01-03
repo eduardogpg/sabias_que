@@ -62,4 +62,4 @@ gem 'will_paginate-bootstrap'
 
 #gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'devise'
-
+gem 'mysql2'
