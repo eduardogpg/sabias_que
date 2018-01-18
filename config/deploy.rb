@@ -1,7 +1,7 @@
 # Change these
-server '138.68.139.125', port: 80, roles: [:web, :app, :db], primary: true
+server '178.62.11.106', port: 90, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'https://github.com/eduardogpg/sabias_que.git'
+set :repo_url,        'git@github.com:eduardogpg/sabias_que.git'
 set :application,     'sabias_que'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
