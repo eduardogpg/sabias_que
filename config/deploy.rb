@@ -1,5 +1,5 @@
 # Change these
-server '178.62.11.106', port: 90, roles: [:web, :app, :db], primary: true
+server '178.62.11.106', port: 80, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:eduardogpg/sabias_que.git'
 set :application,     'sabias_que'
