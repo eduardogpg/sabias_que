@@ -33,11 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'capistrano', '3.7.2'
-gem 'capistrano-bundler'
-gem 'capistrano-rails'
-gem 'capistrano-rvm', github: "capistrano/rvm"
-
+gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,7 +52,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   
-  gem 'capistrano-rake', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -67,7 +62,6 @@ gem 'bootstrap3-rails'
 gem "will_paginate"
 gem 'jquery-rails'
 gem 'will_paginate-bootstrap'
-
 
 #gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'devise'
